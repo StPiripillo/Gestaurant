@@ -1,4 +1,24 @@
 package models;
 
-public class tavolo {
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class tavolo extends baseEntity {
+    private int numeroTAvolo;
+    private int posti;
+    private boolean occupato;
+
+   @OneToMany(mappedBy = "tavolo")
+    private List<ordine> ordini;
+
 }
