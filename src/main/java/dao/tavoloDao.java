@@ -1,4 +1,8 @@
 package dao;
 
-public interface tavoloDao {
+import models.tavolo;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface tavoloDao extends JpaRepository<Long, tavolo>
+{
 }
