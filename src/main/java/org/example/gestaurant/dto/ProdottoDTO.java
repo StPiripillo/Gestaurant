@@ -1,14 +1,14 @@
 package org.example.gestaurant.dto;
 
-import org.example.gestaurant.enums.intolleranze;
-import org.example.gestaurant.enums.tipologia;
+import org.example.gestaurant.enums.Intolleranze;
+import org.example.gestaurant.enums.Tipologia;
 
 public record ProdottoDTO(
         Long id,
         String nome,
         String descrizione,
-        tipologia tipologia,
-        intolleranze intolleranze,
+        Tipologia tipologia,
+        Intolleranze intolleranze,
         double prezzo
 
 )

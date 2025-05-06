@@ -1,6 +1,6 @@
 package org.example.gestaurant.enums;
 
-public enum tipologia {
+public enum Tipologia {
     PRIMI,
     SECONDI,
     ANTIPASTI,

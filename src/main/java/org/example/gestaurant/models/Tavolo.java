@@ -13,12 +13,12 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class tavolo extends baseEntity {
+public class Tavolo extends BaseEntity {
     private int numeroTAvolo;
     private int posti;
     private boolean occupato;
 
    @OneToMany(mappedBy = "tavolo")
-    private List<ordine> ordini;
+    private List<Ordine> ordini;
 
 }

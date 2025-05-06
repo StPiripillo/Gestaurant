@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class sedia extends tavolo {
+public class Sedia extends Tavolo {
 
 	private boolean occupata;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_tavolo")
-	private tavolo tavolo;
+	private Tavolo tavolo;
 }

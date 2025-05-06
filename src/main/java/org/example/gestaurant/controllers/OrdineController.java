@@ -1,6 +1,6 @@
 package org.example.gestaurant.controllers;
 
-import org.example.gestaurant.dao.ordineDao;
+import org.example.gestaurant.dao.OrdineDao;
 import org.example.gestaurant.dto.OrdineDTO;
 import org.example.gestaurant.services.OrdineService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class OrdineController {
 	private OrdineService ordineService;
 
 	@Autowired
-	private ordineDao oDao;
+	private OrdineDao oDao;
 
 	@GetMapping
 	public List<OrdineDTO> getAll() {

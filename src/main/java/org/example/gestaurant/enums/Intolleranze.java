@@ -1,6 +1,6 @@
 package org.example.gestaurant.enums;
 
-public enum intolleranze {
+public enum Intolleranze {
     GLUTINE,
     LATTOSIO,
     SOLFITI,

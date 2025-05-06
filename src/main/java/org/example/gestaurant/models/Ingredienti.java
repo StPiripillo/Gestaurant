@@ -1,6 +1,6 @@
 package org.example.gestaurant.models;
 
-import org.example.gestaurant.enums.intolleranze;
+import org.example.gestaurant.enums.Intolleranze;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
@@ -13,14 +13,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ingredienti extends prodotto {
+public class Ingredienti extends Prodotto {
     private String nome;
     private double prezzoIngredienti;
     @ManyToOne
     @JoinColumn(name = "id_prodotto")
-    private prodotto prodotto;
+    private Prodotto prodotto;
     @Enumerated
-    private intolleranze intolleranze;
+    private Intolleranze intolleranze;
 
 
 

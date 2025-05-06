@@ -1,13 +1,13 @@
 package org.example.gestaurant.services;
 
-import org.example.gestaurant.dao.ordineDao;
-import org.example.gestaurant.dao.prodottoDao;
-import org.example.gestaurant.dao.tavoloDao;
+import org.example.gestaurant.dao.OrdineDao;
+import org.example.gestaurant.dao.ProdottoDao;
+import org.example.gestaurant.dao.TavoloDao;
 import org.example.gestaurant.dto.OrdineDTO;
 import org.example.gestaurant.dto.mappers.OrdineMapper;
-import org.example.gestaurant.models.ordine;
-import org.example.gestaurant.models.prodotto;
-import org.example.gestaurant.models.tavolo;
+import org.example.gestaurant.models.Ordine;
+import org.example.gestaurant.models.Prodotto;
+import org.example.gestaurant.models.Tavolo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,21 +18,21 @@ import java.util.List;
 public class OrdineService
 {
 	@Autowired
-	private ordineDao ordineDao;
+	private OrdineDao ordineDao;
 	@Autowired
-	private prodottoDao prodottiDao;
+	private ProdottoDao prodottiDao;
 	@Autowired
-	private tavoloDao tavoloDao;
+	private TavoloDao tavoloDao;
 
 	public OrdineDTO aggiungiOrdine(Long idOrdine, Long idProdotto)
 	{
-		ordine o= ordineDao.findById(idOrdine).orElse(null);
-		prodotto p = prodottiDao.findById(idProdotto).orElse(null);
-		tavolo t = tavoloDao.findById(idOrdine).orElse(null);
+		Ordine o= ordineDao.findById(idOrdine).orElse(null);
+		Prodotto p = prodottiDao.findById(idProdotto).orElse(null);
+		Tavolo t = tavoloDao.findById(idOrdine).orElse(null);
 
-		ordine or = new ordine();
+		Ordine or = new Ordine();
 		or.setId(idOrdine);
-		or.setProdotti((List<prodotto>) p);
+		or.setProdotti((List<Prodotto>) p);
 		or.setOra(LocalTime.now());
 		or.setTavolo(t);
 

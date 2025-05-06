@@ -1,10 +1,10 @@
 package org.example.gestaurant.services;
 
-import org.example.gestaurant.dao.ordineDao;
-import org.example.gestaurant.dao.prodottoDao;
-import org.example.gestaurant.dao.tavoloDao;
+import org.example.gestaurant.dao.OrdineDao;
+import org.example.gestaurant.dao.ProdottoDao;
+import org.example.gestaurant.dao.TavoloDao;
 import org.example.gestaurant.dto.TavoloDTO;
-import org.example.gestaurant.models.tavolo;
+import org.example.gestaurant.models.Tavolo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +15,14 @@ import java.util.stream.Collectors;
 public class TavoloService {
 
     @Autowired
-    private tavoloDao tavoloDao;
+    private TavoloDao tavoloDao;
     @Autowired
-    private ordineDao ordineDao;
+    private OrdineDao ordineDao;
     @Autowired
-    private prodottoDao prodottiDao;
+    private ProdottoDao prodottiDao;
 
     public void aggiungiTavolo(TavoloDTO tavoloDTO) {
-        tavolo t = new tavolo();
+        Tavolo t = new Tavolo();
         t.setPosti(tavoloDTO.posti());
         t.setNumeroTAvolo(tavoloDTO.numeroTavolo());
 

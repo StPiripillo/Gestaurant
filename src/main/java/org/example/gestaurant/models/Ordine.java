@@ -15,13 +15,13 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class ordine extends baseEntity {
+public class Ordine extends BaseEntity {
     private LocalTime ora;
     @ManyToOne
     @JoinColumn(name = "id_tavolo")
-    private tavolo tavolo;
+    private Tavolo tavolo;
     @OneToMany(mappedBy = "ordine", fetch = FetchType.EAGER)
-    private List<prodotto> prodotti = new ArrayList<>();
+    private List<Prodotto> prodotti = new ArrayList<>();
 
     public double getTotale() {
         return prodotti.stream().mapToDouble(i -> i.getQtn() * i.getPrezzo()).sum();

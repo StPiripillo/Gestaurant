@@ -1,7 +1,7 @@
 package org.example.gestaurant.models;
 
-import org.example.gestaurant.enums.intolleranze;
-import org.example.gestaurant.enums.tipologia;
+import org.example.gestaurant.enums.Intolleranze;
+import org.example.gestaurant.enums.Tipologia;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,19 +16,19 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class prodotto extends baseEntity {
+public class Prodotto extends BaseEntity {
 
 	private int qtn;
 	private String nome;
 	private String descrizione;
 	private double prezzo;
 	@Enumerated
-	private tipologia Tip;
+	private Tipologia Tip;
 	@Enumerated
-	private intolleranze intolleranze;
+	private Intolleranze intolleranze;
 	@OneToMany(mappedBy = "prodotto", fetch = FetchType.EAGER)
-	private List<ingredienti> ingredienti = new ArrayList<>();
+	private List<Ingredienti> ingredienti = new ArrayList<>();
 	@ManyToOne
 	@JoinColumn(name = "id_ordine")
-	private ordine ordine;
+	private Ordine ordine;
 }
