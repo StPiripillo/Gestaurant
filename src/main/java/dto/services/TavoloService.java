@@ -28,18 +28,12 @@ public class TavoloService {
     @Autowired
     private prodottoDao prodottiDao;
 
-    public TavoloDTO aggiungiTavolo(Long idTavolo,Long idOrdine, Long idProdotto) {
-        tavolo t= tavoloDao.findByIdTavolo(idTavolo);
-        ordine o= ordineDao.findByIdOrdine(idOrdine);
-        prodotto p= prodottiDao.findByIProdotto(idProdotto);
+    public void aggiungiTavolo(TavoloDTO tavoloDTO) {
+        tavolo t = new tavolo();
+        t.setPosti(tavoloDTO.posti());
+        t.setNumeroTAvolo(tavoloDTO.numeroTavolo());
 
-        tavolo tavol= new tavolo();
-        tavol.setId(idTavolo);
-        tavol.setPosti(tavol.getPosti());
-        tavol.setNumeroTAvolo(tavol.getNumeroTAvolo());
-
-        tavoloDao.save(idTavolo);
-        return new TavoloDTO(tavol.getId(),tavol.getPosti(),tavol.getNumeroTAvolo(),tavol.toString());
+        tavoloDao.save(t);
 
 
     }
