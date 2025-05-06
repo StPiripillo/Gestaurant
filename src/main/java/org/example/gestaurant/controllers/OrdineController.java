@@ -4,9 +4,7 @@ import org.example.gestaurant.dao.ordineDao;
 import org.example.gestaurant.dto.OrdineDTO;
 import org.example.gestaurant.services.OrdineService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,6 +28,13 @@ public class OrdineController {
 				))
 				.collect(Collectors.toList());
 
+	}
+
+	//da controllare
+	@PostMapping("/aggiungi")
+	public OrdineDTO aggiungi(OrdineDTO ordineDTO)
+	{
+		 return ordineService.aggiungiOrdine(ordineDTO.id(), ordineDTO.id());
 	}
 
 
