@@ -10,12 +10,15 @@ import java.util.List;
 
 public class OrdineMapper
 {
-	@Autowired
-	ProdottoMapper prodottoMapper;
+    @Autowired
+    ProdottoMapper prodottoMapper;
 
-	public OrdineDTO toDto(ordine ordine)
-	{
-		List<ProdottoDTO> prodottoDTOS = prodottoMapper.toDtos(ordine.getProdotti());
-		return new OrdineDTO(ordine.getId(), ordine.getProdotti(), ordine.getTotale());
-	}
+    public OrdineDTO toDto(ordine ordine)
+    {
+        List<ProdottoDTO> prodottoDTOS = prodottoMapper.toDto(ordine.getProdotti());
+        return new OrdineDTO(ordine.getId(), ordine.getProdotti(), ordine.getTotale());
+    }
 }
+
+
+

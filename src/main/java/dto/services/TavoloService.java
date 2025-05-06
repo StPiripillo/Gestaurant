@@ -1,5 +1,4 @@
 package dto.services;
 
-public class TavoloService
-{
+public class TavoloService {
 }

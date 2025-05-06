@@ -1,11 +1,5 @@
 package dto;
 
-public record TavoloDTO(
-		Long id,
-		int numeroTavolo,
-		int posti,
-		String stato
-
-)
+public record TavoloDTO()
 {
 }
