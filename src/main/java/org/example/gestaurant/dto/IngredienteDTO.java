@@ -1,8 +1,6 @@
-package dto;
+package org.example.gestaurant.dto;
 
-import enums.intolleranze;
-
-import java.util.List;
+import org.example.gestaurant.enums.intolleranze;
 
 public record IngredienteDTO(
 		Long id,

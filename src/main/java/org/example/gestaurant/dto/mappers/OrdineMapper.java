@@ -1,12 +1,11 @@
-package dto.mappers;
+package org.example.gestaurant.dto.mappers;
 
-import dto.OrdineDTO;
-import dto.ProdottoDTO;
-import models.ordine;
+import org.example.gestaurant.dto.OrdineDTO;
+import org.example.gestaurant.dto.ProdottoDTO;
+import org.example.gestaurant.models.ordine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

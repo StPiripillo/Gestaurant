@@ -1,6 +1,6 @@
-package models;
+package org.example.gestaurant.models;
 
-import enums.intolleranze;
+import org.example.gestaurant.enums.intolleranze;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;

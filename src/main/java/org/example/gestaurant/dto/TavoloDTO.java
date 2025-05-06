@@ -1,4 +1,4 @@
-package dto;
+package org.example.gestaurant.dto;
 
 public record TavoloDTO(
 		Long id,

@@ -1,7 +1,7 @@
-package models;
+package org.example.gestaurant.models;
 
-import enums.intolleranze;
-import enums.tipologia;
+import org.example.gestaurant.enums.intolleranze;
+import org.example.gestaurant.enums.tipologia;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

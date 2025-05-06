@@ -1,10 +1,8 @@
-package dto;
+package org.example.gestaurant.dto;
 
 
-import models.prodotto;
+import org.example.gestaurant.models.prodotto;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 public record OrdineDTO(

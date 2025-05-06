@@ -1,4 +1,4 @@
-package models;
+package org.example.gestaurant.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

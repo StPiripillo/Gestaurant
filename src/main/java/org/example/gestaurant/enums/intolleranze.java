@@ -1,4 +1,4 @@
-package enums;
+package org.example.gestaurant.enums;
 
 public enum intolleranze {
     GLUTINE,

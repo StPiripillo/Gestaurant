@@ -1,7 +1,7 @@
-package dto.mappers;
+package org.example.gestaurant.dto.mappers;
 
-import dto.ProdottoDTO;
-import models.prodotto;
+import org.example.gestaurant.dto.ProdottoDTO;
+import org.example.gestaurant.models.prodotto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
