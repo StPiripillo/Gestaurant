@@ -54,7 +54,7 @@ public class OrdineController {
 		 return ordineService.aggiungiOrdine(ordineDTO.id(), ordineDTO.id());
 	}
 	//fare metodo getAll prodotti
-	@GetMapping
+	@GetMapping("/prodotti")
 	public List<ProdottoDTO> getAllProdotti() {
 		return pDao.findAll().stream()
 				.map(prodotto -> new ProdottoDTO(
