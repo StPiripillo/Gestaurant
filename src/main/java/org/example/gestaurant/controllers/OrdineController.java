@@ -32,7 +32,7 @@ public class OrdineController {
 
 	//da controllare
 	@PostMapping("/aggiungi")
-	public OrdineDTO aggiungi(OrdineDTO ordineDTO)
+	public OrdineDTO aggiungi(@RequestBody OrdineDTO ordineDTO)
 	{
 		 return ordineService.aggiungiOrdine(ordineDTO.id(), ordineDTO.id());
 	}
