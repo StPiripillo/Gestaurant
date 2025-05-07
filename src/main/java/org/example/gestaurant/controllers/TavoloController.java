@@ -1,5 +1,6 @@
 package org.example.gestaurant.controllers;
 
+import org.example.gestaurant.dto.TavoloCreateDTO;
 import org.example.gestaurant.dto.TavoloDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,8 @@ public class TavoloController {
 		return tavoloService.getAll();
 	}
 
-	@PostMapping
-	public void aggiungiTavolo(@RequestBody TavoloDTO tavoloDTO) {
-		tavoloService.aggiungiTavolo(tavoloDTO);
+	@PostMapping("/aggiungi")
+	public void aggiungiTavolo(@RequestBody TavoloCreateDTO tavoloCreateDTO) {
+		tavoloService.aggiungiTavolo(tavoloCreateDTO);
 	}
 }

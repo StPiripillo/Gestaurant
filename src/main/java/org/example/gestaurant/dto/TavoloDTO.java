@@ -5,7 +5,6 @@ public record TavoloDTO(
 		int numeroTavolo,
 		int posti,
 		String stato
-
 )
 {
 }

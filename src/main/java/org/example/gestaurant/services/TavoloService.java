@@ -3,6 +3,7 @@ package org.example.gestaurant.services;
 import org.example.gestaurant.dao.OrdineDao;
 import org.example.gestaurant.dao.ProdottoDao;
 import org.example.gestaurant.dao.TavoloDao;
+import org.example.gestaurant.dto.TavoloCreateDTO;
 import org.example.gestaurant.dto.TavoloDTO;
 import org.example.gestaurant.models.Tavolo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,11 @@ public class TavoloService {
     @Autowired
     private ProdottoDao prodottiDao;
 
-    public void aggiungiTavolo(TavoloDTO tavoloDTO) {
+    public void aggiungiTavolo(TavoloCreateDTO tavoloCreateDTO) {
         Tavolo t = new Tavolo();
-        t.setPosti(tavoloDTO.posti());
-        t.setNumeroTAvolo(tavoloDTO.numeroTavolo());
+        t.setNumeroTAvolo(tavoloCreateDTO.numeroTavolo());
+        t.setPosti(tavoloCreateDTO.posti());
+
 
         tavoloDao.save(t);
 
