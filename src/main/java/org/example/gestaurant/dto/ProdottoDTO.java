@@ -9,7 +9,8 @@ public record ProdottoDTO(
         String descrizione,
         Tipologia tipologia,
         Intolleranze intolleranze,
-        double prezzo
+        double prezzo,
+		int Qtn
 
 )
 {

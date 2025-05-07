@@ -29,6 +29,7 @@ public class ProdottoService
 		pr.setTip(p.getTip());
 		pr.setIntolleranze(p.getIntolleranze());
 		pr.getPrezzo();
+		pr.getQtn();
 
 		prodottiDao.save(pr);
 		return ProdottoMapper.toDto(pr);

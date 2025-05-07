@@ -57,7 +57,8 @@ public class OrdineController {
 						prodotto.getDescrizione(),
 						prodotto.getTip(),
 						prodotto.getIntolleranze(),
-						prodotto.getPrezzo()
+						prodotto.getPrezzo(),
+						prodotto.getQtn()
 				))
 				.collect(Collectors.toList());
 	}
