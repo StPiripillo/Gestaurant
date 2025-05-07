@@ -11,6 +11,7 @@ public class ProdottoMapper {
 
     public static ProdottoDTO toDto(Prodotto prodotto) {
         return new ProdottoDTO(
+                prodotto.getId(),
                 prodotto.getNome(), prodotto.getDescrizione(),prodotto.getTip(),prodotto.getIntolleranze(), prodotto.getPrezzo());
 
     }
