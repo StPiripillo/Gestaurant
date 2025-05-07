@@ -34,4 +34,13 @@ public class ProdottoService
 		prodottiDao.save(pr);
 		return ProdottoMapper.toDto(pr);
 	}
+
+	public ProdottoDTO modificaPrezzo(Long idProdotto, double nuovoPrezzo)
+	{
+		Prodotto prodotto = prodottiDao.findById(idProdotto).orElseThrow(() -> new IllegalArgumentException("Prodotto non trovato"));
+		prodotto.setPrezzo(nuovoPrezzo);
+		prodottiDao.save(prodotto);
+		return ProdottoMapper.toDto(prodotto);
+	}
+
 }

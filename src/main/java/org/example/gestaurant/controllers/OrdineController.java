@@ -69,10 +69,18 @@ public class OrdineController {
 		return prodottoService.aggiungiProdotto(prodottoDTO.id());
 	}
 
-	//c
+
 	@DeleteMapping("/{id}")
 	public void eliminaProdotto(@PathVariable Long id) {
 		pDao.deleteById(id);
 	}
+
+	@PostMapping("/{id}/prezzo")
+	public ProdottoDTO modificaPrezzo(@RequestBody ProdottoDTO prodottoDTO, @PathVariable Long id)
+	{
+		return prodottoService.modificaPrezzo(prodottoDTO.id(), id);
+	}
+
+
 
 }
