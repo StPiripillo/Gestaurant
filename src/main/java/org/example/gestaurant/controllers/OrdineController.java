@@ -1,9 +1,16 @@
 package org.example.gestaurant.controllers;
 
+import org.example.gestaurant.dao.IngredientiDao;
 import org.example.gestaurant.dao.OrdineDao;
+import org.example.gestaurant.dao.ProdottoDao;
 import org.example.gestaurant.dto.OrdineDTO;
+import org.example.gestaurant.dto.ProdottoDTO;
+import org.example.gestaurant.models.Ingredienti;
 import org.example.gestaurant.services.OrdineService;
+import org.example.gestaurant.services.ProdottoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,11 +22,21 @@ public class OrdineController {
 	@Autowired
 	private OrdineService ordineService;
 
+
 	@Autowired
 	private OrdineDao oDao;
 
+	@Autowired
+	private ProdottoDao pDao;
+	@Autowired
+	private ProdottoService prodottoService;
+	@Autowired
+	private IngredientiDao ingredientiDAO;
+
+
 	@GetMapping
-	public List<OrdineDTO> getAll() {
+	public List<OrdineDTO> getAll()
+	{
 
 		return oDao.findAll().stream().map(ordine -> new OrdineDTO(
 						ordine.getId(),
@@ -36,6 +53,81 @@ public class OrdineController {
 	{
 		 return ordineService.aggiungiOrdine(ordineDTO.id(), ordineDTO.id());
 	}
+	//fare metodo getAll prodotti
+	@GetMapping("/prodotti")
+	public List<ProdottoDTO> getAllProdotti() {
+		return pDao.findAll().stream()
+				.map(prodotto -> new ProdottoDTO(
+						prodotto.getId(),
+						prodotto.getNome(),
+						prodotto.getDescrizione(),
+						prodotto.getTip(),
+						prodotto.getIntolleranze(),
+						prodotto.getPrezzo(),
+						prodotto.getQtn()
+				))
+				.collect(Collectors.toList());
+	}
+	//metodo per creare i prodotti
+
+	@PostMapping ("/newprodotto")
+	public ProdottoDTO aggiungiProdotto(@RequestBody ProdottoDTO prodottoDTO){
+		return prodottoService.aggiungiProdotto(prodottoDTO.id());
+	}
+
+	//c
+	@DeleteMapping("/{id}")
+	public void eliminaProdotto(@PathVariable Long id) {
+		pDao.deleteById(id);
+	}
+
+
+	@PostMapping("/ingredienti")
+	public ResponseEntity<Ingredienti> creaIngrediente(@RequestBody Ingredienti ingrediente) {
+		Ingredienti salvato = ingredientiDAO.save(ingrediente);
+		return ResponseEntity.status(HttpStatus.CREATED).body(salvato);
+	}
+
+	@GetMapping("/ingredienti")
+	public List<Ingredienti> getAllIngredienti() {
+		return ingredientiDAO.findAll();
+	}
+
+	@GetMapping("/ingredienti/{id}")
+	public ResponseEntity<Ingredienti> getIngredienteById(@PathVariable Long id) {
+		return ingredientiDAO.findById(id)
+				.map(ResponseEntity::ok)
+				.orElse(ResponseEntity.notFound().build());
+	}
+
+	@PutMapping("/ingredienti/{id}")
+	public ResponseEntity<Ingredienti> aggiornaIngrediente(
+			@PathVariable Long id,
+			@RequestBody Ingredienti nuovoIngrediente) {
+
+		return ingredientiDAO.findById(id).map(ingrediente -> {
+			ingrediente.setNome(nuovoIngrediente.getNome());
+			ingrediente.setPrezzoIngredienti(nuovoIngrediente.getPrezzoIngredienti());
+			ingrediente.setIntolleranze(nuovoIngrediente.getIntolleranze());
+			Ingredienti aggiornato = ingredientiDAO.save(ingrediente);
+			return ResponseEntity.ok(aggiornato);
+		}).orElse(ResponseEntity.notFound().build());
+	}
+
+	@DeleteMapping("/ingredienti/{id}")
+	public ResponseEntity<Void> eliminaIngrediente(@PathVariable Long id) {
+		if (!ingredientiDAO.existsById(id)) {
+			return ResponseEntity.notFound().build();
+		}
+		ingredientiDAO.deleteById(id);
+		return ResponseEntity.noContent().build();
+	}
+	@PostMapping("/{id}/prezzo")
+	public ProdottoDTO modificaPrezzo(@RequestBody ProdottoDTO prodottoDTO, @PathVariable Long id)
+	{
+		return prodottoService.modificaPrezzo(prodottoDTO.id(), id);
+	}
+
 
 
 }

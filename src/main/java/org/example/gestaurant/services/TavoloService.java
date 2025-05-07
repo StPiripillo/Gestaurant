@@ -38,7 +38,6 @@ public class TavoloService {
         return tavoloDao.findAll()
                 .stream()
                 .map(t -> new TavoloDTO(
-                        t.getId(),
                         t.getNumeroTAvolo(),
                         t.getPosti(),
                         t.isOccupato(),
