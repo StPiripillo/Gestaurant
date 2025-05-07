@@ -24,9 +24,8 @@ public class TavoloService {
 
     public void aggiungiTavolo(TavoloCreateDTO tavoloCreateDTO) {
         Tavolo t = new Tavolo();
-        t.setNumeroTAvolo(tavoloCreateDTO.numeroTavolo());
         t.setPosti(tavoloCreateDTO.posti());
-
+        t.setNumeroTAvolo(tavoloCreateDTO.numeroTAvolo());
 
         tavoloDao.save(t);
 
@@ -39,7 +38,7 @@ public class TavoloService {
                         t.getId(),
                         t.getNumeroTAvolo(),
                         t.getPosti(),
-                        t.isOccupato() ? "OCCUPATO" : "LIBERO"
+                        t.isOccupato()
                 ))
                 .collect(Collectors.toList());
     }

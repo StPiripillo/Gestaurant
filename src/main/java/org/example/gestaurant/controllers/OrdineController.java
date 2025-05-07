@@ -31,7 +31,7 @@ public class OrdineController {
 	}
 
 	//da controllare
-	@PostMapping("/aggiungi")
+	@PostMapping
 	public OrdineDTO aggiungi(@RequestBody OrdineDTO ordineDTO)
 	{
 		 return ordineService.aggiungiOrdine(ordineDTO.id(), ordineDTO.id());
