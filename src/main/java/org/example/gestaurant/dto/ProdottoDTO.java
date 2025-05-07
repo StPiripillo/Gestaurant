@@ -4,7 +4,7 @@ import org.example.gestaurant.enums.Intolleranze;
 import org.example.gestaurant.enums.Tipologia;
 
 public record ProdottoDTO(
-        Long id,
+		Long id,
         String nome,
         String descrizione,
         Tipologia tipologia,
