@@ -4,7 +4,9 @@ public record TavoloDTO(
 		Long id,
 		int numeroTAvolo,
 		int posti,
-		boolean occupato
+		boolean occupato,
+		int x,
+		int y
 )
 {
 }

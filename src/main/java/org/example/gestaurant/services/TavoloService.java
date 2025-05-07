@@ -22,14 +22,17 @@ public class TavoloService {
     @Autowired
     private ProdottoDao prodottiDao;
 
+    public TavoloService(TavoloDao tavoloDao)
+    {
+        this.tavoloDao = tavoloDao;
+    }
+
     public void aggiungiTavolo(TavoloCreateDTO tavoloCreateDTO) {
         Tavolo t = new Tavolo();
         t.setPosti(tavoloCreateDTO.posti());
         t.setNumeroTAvolo(tavoloCreateDTO.numeroTAvolo());
 
         tavoloDao.save(t);
-
-
     }
     public List<TavoloDTO> getAll() {
         return tavoloDao.findAll()
@@ -38,15 +41,20 @@ public class TavoloService {
                         t.getId(),
                         t.getNumeroTAvolo(),
                         t.getPosti(),
-                        t.isOccupato()
+                        t.isOccupato(),
+                        t.getX(),
+                        t.getY()
                 ))
                 .collect(Collectors.toList());
     }
 
-
-
-
-
+    public Tavolo updatePosition(Long id, int x, int y) {
+        Tavolo tavolo = tavoloDao.findById(id)
+                .orElseThrow(() -> new RuntimeException("Elemento non trovato"));
+        tavolo.setX(x);
+        tavolo.setY(y);
+        return tavoloDao.save(tavolo);
+    }
 
 }
 

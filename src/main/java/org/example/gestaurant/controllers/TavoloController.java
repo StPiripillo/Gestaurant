@@ -2,12 +2,14 @@ package org.example.gestaurant.controllers;
 
 import org.example.gestaurant.dto.TavoloCreateDTO;
 import org.example.gestaurant.dto.TavoloDTO;
+import org.example.gestaurant.models.Tavolo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.example.gestaurant.services.TavoloService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/tavoli")
@@ -15,6 +17,10 @@ public class TavoloController {
 
 	@Autowired
 	private TavoloService tavoloService;
+
+	public TavoloController(TavoloService service) {
+		this.tavoloService = service;
+	}
 
 	@GetMapping
 	public List<TavoloDTO> getAllTavoli() {
@@ -24,5 +30,12 @@ public class TavoloController {
 	@PostMapping()
 	public void aggiungiTavolo(@RequestBody TavoloCreateDTO tavoloCreateDTO) {
 		tavoloService.aggiungiTavolo(tavoloCreateDTO);
+	}
+
+	@PutMapping("/{id}")
+	public Tavolo updatePosition(@PathVariable Long id, @RequestBody Map<String, Object> body) {
+		int x = (int) body.get("x");
+		int y = (int) body.get("y");
+		return tavoloService.updatePosition(id, x, y);
 	}
 }

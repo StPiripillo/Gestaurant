@@ -17,6 +17,8 @@ public class Tavolo extends BaseEntity {
     private int numeroTAvolo;
     private int posti;
     private boolean occupato;
+    private int x;
+    private int y;
 
    @OneToMany(mappedBy = "tavolo")
     private List<Ordine> ordini;
