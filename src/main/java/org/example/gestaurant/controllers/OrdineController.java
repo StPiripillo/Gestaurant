@@ -5,6 +5,7 @@ import org.example.gestaurant.dao.OrdineDao;
 import org.example.gestaurant.dao.ProdottoDao;
 import org.example.gestaurant.dto.OrdineDTO;
 import org.example.gestaurant.dto.ProdottoDTO;
+import org.example.gestaurant.enums.Tipologia;
 import org.example.gestaurant.models.Ingredienti;
 import org.example.gestaurant.services.OrdineService;
 import org.example.gestaurant.services.ProdottoService;
@@ -13,6 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -126,6 +130,13 @@ public class OrdineController {
 	public ProdottoDTO modificaPrezzo(@RequestBody ProdottoDTO prodottoDTO, @PathVariable Long id)
 	{
 		return prodottoService.modificaPrezzo(prodottoDTO.id(), id);
+	}
+
+	@GetMapping("/categoria")
+	public List<String> getCategoria() {
+		return Arrays.stream(Tipologia.values())
+				.map(Tipologia::name)
+				.collect(Collectors.toList());
 	}
 
 
