@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Tavolo extends BaseEntity {
-    private int numeroTAvolo;
+//    private int numeroTAvolo;
     private int posti;
     private boolean occupato;
     private int x;

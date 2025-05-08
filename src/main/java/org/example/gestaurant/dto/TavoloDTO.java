@@ -1,8 +1,8 @@
 package org.example.gestaurant.dto;
 
 public record TavoloDTO(
-
-		int numeroTAvolo,
+		Long id,
+//		int numeroTAvolo,
 		int posti,
 		boolean occupato,
 		int x,

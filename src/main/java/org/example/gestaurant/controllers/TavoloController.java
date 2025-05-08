@@ -1,5 +1,6 @@
 package org.example.gestaurant.controllers;
 
+import org.example.gestaurant.dao.TavoloDao;
 import org.example.gestaurant.dto.TavoloCreateDTO;
 import org.example.gestaurant.dto.TavoloDTO;
 import org.example.gestaurant.models.Tavolo;
@@ -13,10 +14,13 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/tavoli")
+@CrossOrigin(origins = "http://localhost:4200")
 public class TavoloController {
 
 	@Autowired
 	private TavoloService tavoloService;
+	@Autowired
+	private TavoloDao tavoloDao;
 
 	public TavoloController(TavoloService service) {
 		this.tavoloService = service;
@@ -33,9 +37,12 @@ public class TavoloController {
 	}
 
 	@PutMapping("/{id}")
-	public Tavolo updatePosition(@PathVariable Long id, @RequestBody Map<String, Object> body) {
-		int x = (int) body.get("x");
-		int y = (int) body.get("y");
+	public Tavolo updatePosition(@PathVariable Long id, @RequestBody TavoloDTO tav) {
+//		int x = (int) body.get("x");
+//		int y = (int) body.get("y");
+		int x = tav.x();
+		int y = tav.y();
+
 		return tavoloService.updatePosition(id, x, y);
 	}
 }

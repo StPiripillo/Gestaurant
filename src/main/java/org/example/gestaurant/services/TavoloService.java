@@ -30,7 +30,7 @@ public class TavoloService {
     public void aggiungiTavolo(TavoloCreateDTO tavoloCreateDTO) {
         Tavolo t = new Tavolo();
         t.setPosti(tavoloCreateDTO.posti());
-        t.setNumeroTAvolo(tavoloCreateDTO.numeroTAvolo());
+//        t.setNumeroTAvolo(tavoloCreateDTO.numeroTAvolo());
 
         tavoloDao.save(t);
     }
@@ -38,7 +38,8 @@ public class TavoloService {
         return tavoloDao.findAll()
                 .stream()
                 .map(t -> new TavoloDTO(
-                        t.getNumeroTAvolo(),
+                        t.getId(),
+//                        t.getNumeroTAvolo(),
                         t.getPosti(),
                         t.isOccupato(),
                         t.getX(),
