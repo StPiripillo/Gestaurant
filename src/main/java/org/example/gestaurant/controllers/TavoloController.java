@@ -46,7 +46,7 @@ public class TavoloController {
 		return tavoloService.updatePosition(id, x, y);
 	}
 
-	@DeleteMapping("/{id}")
+	@PostMapping("/{id}")
 	public TavoloService delete(@PathVariable Long id)
 	{
 		Tavolo tavolo = tavoloDao.findById(id).orElse(null);
