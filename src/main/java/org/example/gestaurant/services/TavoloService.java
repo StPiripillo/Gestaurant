@@ -56,6 +56,13 @@ public class TavoloService {
         return tavoloDao.save(tavolo);
     }
 
+    public Tavolo delete(Long id)
+    {
+        Tavolo tavolo = tavoloDao.findById(id).orElseThrow(() -> new RuntimeException("Elemento non trovato"));
+        tavoloDao.delete(tavolo);
+        return tavolo;
+    }
+
 }
 
 
