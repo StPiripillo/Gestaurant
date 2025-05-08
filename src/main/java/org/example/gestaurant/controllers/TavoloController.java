@@ -47,15 +47,14 @@ public class TavoloController {
 	}
 
 	@DeleteMapping("/{id}")
-	public TavoloService delete(@PathVariable Long id)
-	{
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		Tavolo tavolo = tavoloDao.findById(id).orElse(null);
 		if (tavolo != null) {
 			tavoloDao.delete(tavolo);
-			return new TavoloService(tavoloDao);
+			return ResponseEntity.noContent().build();  // Risposta 204 No Content
 		} else {
-			return null;
+			return ResponseEntity.notFound().build();  // Risposta 404 Not Found se Tavolo non esiste
 		}
-
 	}
+
 }
