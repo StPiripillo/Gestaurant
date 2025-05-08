@@ -62,11 +62,12 @@ public class TavoloService {
         tavoloDao.delete(tavolo);
         return tavolo;
     }
-    public  Tavolo updateNumeroTavolo(Long id,int numeroTavolo) {
-        Tavolo tavolo = tavoloDao.findAllByNumeroTavolo(numeroTavolo);
-        tavolo.setNumeroTavolo(numeroTavolo);
+    public Tavolo updateNumeroTavolo(Long id, int nuovoNumero) {
+        Tavolo tavolo = tavoloDao.findById(id).orElseThrow(() -> new RuntimeException("Tavolo non trovato"));
+        tavolo.setNumeroTavolo(nuovoNumero);
         return tavoloDao.save(tavolo);
     }
+
 
 
 

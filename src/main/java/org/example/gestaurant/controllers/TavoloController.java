@@ -57,9 +57,9 @@ public class TavoloController {
 		}
 	}
 	@PutMapping ("/{id}/numero")
-	public Tavolo updateNumeroTavolo( @PathVariable Long id,@RequestBody TavoloDTO tavo)
+	public Tavolo updateNumeroTavolo( @PathVariable Long id,@RequestBody Map<String, Integer> body)
 	{
-		int numeroTavolo = tavo.numeroTavolo();
+		int numeroTavolo = body.get("numeroTavolo");
 		return tavoloService.updateNumeroTavolo(id, numeroTavolo);
 	}
 
