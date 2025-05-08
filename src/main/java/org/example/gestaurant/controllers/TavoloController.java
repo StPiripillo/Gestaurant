@@ -51,9 +51,9 @@ public class TavoloController {
 		Tavolo tavolo = tavoloDao.findById(id).orElse(null);
 		if (tavolo != null) {
 			tavoloDao.delete(tavolo);
-			return ResponseEntity.noContent().build();  // Risposta 204 No Content
+			return ResponseEntity.noContent().build();
 		} else {
-			return ResponseEntity.notFound().build();  // Risposta 404 Not Found se Tavolo non esiste
+			return ResponseEntity.notFound().build();
 		}
 	}
 
