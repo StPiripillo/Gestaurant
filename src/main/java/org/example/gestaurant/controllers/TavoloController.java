@@ -56,5 +56,11 @@ public class TavoloController {
 			return ResponseEntity.notFound().build();
 		}
 	}
+	@PutMapping ("/{id}/numero")
+	public Tavolo updateNumeroTavolo( @PathVariable Long id,@RequestBody TavoloDTO tavo)
+	{
+		int numeroTavolo = tavo.numeroTavolo();
+		return tavoloService.updateNumeroTavolo(id, numeroTavolo);
+	}
 
 }
