@@ -68,6 +68,14 @@ public class TavoloService {
         return tavoloDao.save(tavolo);
     }
 
+    //metodo che può far esplodere tutto
+    public Tavolo updateOccupato(Long id, boolean occupato)
+    {
+        Tavolo tavolo = tavoloDao.findById(id).orElseThrow(() -> new RuntimeException("Tavolo non trovato"));
+        tavolo.setOccupato(occupato);
+        return tavoloDao.save(tavolo);
+    }
+
 
 
 
