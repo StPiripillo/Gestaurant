@@ -1,5 +1,6 @@
 package org.example.gestaurant.dto;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.example.gestaurant.enums.Intolleranze;
 import org.example.gestaurant.enums.Tipologia;
 
