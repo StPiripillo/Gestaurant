@@ -137,9 +137,9 @@ public class OrdineController {
 //		return prodottoService.modificaPrezzo(prodottoDTO.id(), id);
 //	}
 	@PostMapping("/{id}/prezzo")
-	public ProdottoDTO modificaPrezzo(@PathVariable Long id, @RequestBody Map<String, Integer> prezzo)
+	public ProdottoDTO modificaPrezzo(@PathVariable Long id, @RequestBody Map<String, Double> prezzo)
 	{
-		int prezzoProdotto = prezzo.get("numeroTavolo");
+		double prezzoProdotto = prezzo.get("prezzo");
 		return prodottoService.modificaPrezzo(id, prezzoProdotto);
 	}
 
