@@ -7,7 +7,8 @@ public record TavoloCreateDTO(
 		Long id,
 		int numeroTavolo,
 		Forma forma,
-		Dimensione dimensione
+		Dimensione dimensione,
+		int posti
 )
 {
 }

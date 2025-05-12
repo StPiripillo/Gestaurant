@@ -31,7 +31,9 @@ public class TavoloService {
         Tavolo t = new Tavolo();
         t.setNumeroTavolo(tavoloCreateDTO.numeroTavolo());
         t.setForma(tavoloCreateDTO.forma());
+        t.setPosti(tavoloCreateDTO.posti());
         t.setDimensione(tavoloCreateDTO.dimensione());
+
 
         tavoloDao.save(t);
     }
