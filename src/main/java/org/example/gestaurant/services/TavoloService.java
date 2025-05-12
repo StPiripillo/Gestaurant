@@ -27,10 +27,13 @@ public class TavoloService {
         this.tavoloDao = tavoloDao;
     }
 
-    public void aggiungiTavolo(TavoloDTO tavoloDTO) {
+    public void aggiungiTavolo(TavoloCreateDTO tavoloCreateDTO) {
         Tavolo t = new Tavolo();
-        t.setPosti(tavoloDTO.posti());
-        t.setNumeroTavolo(tavoloDTO.numeroTavolo());
+        t.setNumeroTavolo(tavoloCreateDTO.numeroTavolo());
+        t.setForma(tavoloCreateDTO.forma());
+        t.setPosti(tavoloCreateDTO.posti());
+        t.setDimensione(tavoloCreateDTO.dimensione());
+
 
         tavoloDao.save(t);
     }
@@ -40,6 +43,8 @@ public class TavoloService {
                 .map(t -> new TavoloDTO(
                         t.getId(),
                         t.getNumeroTavolo(),
+                        t.getForma(),
+                        t.getDimensione(),
                         t.getPosti(),
                         t.isOccupato(),
                         t.getX(),

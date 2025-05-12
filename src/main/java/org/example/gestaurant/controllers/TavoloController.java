@@ -38,8 +38,6 @@ public class TavoloController {
 
 	@PutMapping("/{id}")
 	public Tavolo updatePosition(@PathVariable Long id, @RequestBody TavoloDTO tav) {
-//		int x = (int) body.get("x");
-//		int y = (int) body.get("y");
 		int x = tav.x();
 		int y = tav.y();
 
