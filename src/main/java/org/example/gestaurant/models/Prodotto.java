@@ -22,9 +22,9 @@ public class Prodotto extends BaseEntity {
 	private String nome;
 	private String descrizione;
 	private double prezzo;
-	@Enumerated(EnumType.STRING)
+	@Enumerated
 	private Tipologia Tip;
-	@Enumerated(EnumType.STRING)
+	@Enumerated
 	private Intolleranze intolleranze;
 	@OneToMany(mappedBy = "prodotto", fetch = FetchType.EAGER)
 	private List<Ingredienti> ingredienti = new ArrayList<>();
