@@ -8,6 +8,7 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.gestaurant.enums.Dimensione;
 import org.example.gestaurant.enums.Forma;
 
 import java.util.List;
@@ -18,10 +19,11 @@ import java.util.List;
 @AllArgsConstructor
 public class Tavolo extends BaseEntity {
     private int numeroTavolo;
-    private int dimensione;
-    private int posti;
     @Enumerated (EnumType.STRING)
     private Forma forma;
+    @Enumerated (EnumType.STRING)
+    private Dimensione dimensione;
+    private int posti;
     private boolean occupato;
     private int x;
     private int y;
