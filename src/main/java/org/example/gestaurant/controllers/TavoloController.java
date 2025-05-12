@@ -61,8 +61,8 @@ public class TavoloController {
 	}
 
 	@PutMapping("/{id}/occupato")
-	private Tavolo updateOccupato(@PathVariable Long id, @RequestBody Map<String, Boolean> body) {
-		boolean occupato = body.get("occupato");
+	private Tavolo updateOccupato(@PathVariable Long id, @RequestBody Map<String, Integer> body) {
+		int occupato = body.get("occupato");
 		return tavoloService.updateOccupato(id, occupato);
 	}
 

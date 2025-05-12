@@ -45,7 +45,7 @@ public class TavoloService {
 //                        t.getForma(),
 //                        t.getDimensione(),
                         t.getPosti(),
-                        t.isOccupato(),
+                        t.getOccupato(),
                         t.getX(),
                         t.getY()
                 ))
@@ -73,7 +73,7 @@ public class TavoloService {
     }
 
     //metodo che può far esplodere tutto
-    public Tavolo updateOccupato(Long id, boolean occupato)
+    public Tavolo updateOccupato(Long id, int occupato)
     {
         Tavolo tavolo = tavoloDao.findById(id).orElseThrow(() -> new RuntimeException("Tavolo non trovato"));
         tavolo.setOccupato(occupato);

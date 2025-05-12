@@ -9,7 +9,7 @@ public record TavoloDTO(
 //		Forma forma,
 //		Dimensione dimensione,
 		int posti,
-		boolean occupato,
+		int occupato,
 		int x,
 		int y
 )

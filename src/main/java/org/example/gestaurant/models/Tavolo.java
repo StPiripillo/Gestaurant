@@ -24,7 +24,7 @@ public class Tavolo extends BaseEntity {
 //    @Enumerated (EnumType.STRING)
 //    private Dimensione dimensione;
     private int posti;
-    private boolean occupato;
+    private int occupato;
     private int x;
     private int y;
 
