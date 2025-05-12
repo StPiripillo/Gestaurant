@@ -7,6 +7,7 @@ import org.example.gestaurant.dto.OrdineDTO;
 import org.example.gestaurant.dto.ProdottoDTO;
 import org.example.gestaurant.enums.Tipologia;
 import org.example.gestaurant.models.Ingredienti;
+import org.example.gestaurant.models.Prodotto;
 import org.example.gestaurant.services.OrdineService;
 import org.example.gestaurant.services.ProdottoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -29,7 +29,6 @@ public class OrdineController {
 
 	@Autowired
 	private OrdineDao oDao;
-
 	@Autowired
 	private ProdottoDao pDao;
 	@Autowired
@@ -81,8 +80,14 @@ public class OrdineController {
 
 	//c
 	@DeleteMapping("/{id}")
-	public void eliminaProdotto(@PathVariable Long id) {
-		pDao.deleteById(id);
+	public ResponseEntity<Object> eliminaProdotto(@PathVariable Long id) {
+		Prodotto prodotto = pDao.findById(id).orElse(null);
+		if (prodotto != null) {
+			pDao.delete(prodotto);
+			return ResponseEntity.noContent().build();
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 
 
@@ -126,11 +131,18 @@ public class OrdineController {
 		ingredientiDAO.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
+//	@PostMapping("/{id}/prezzo")
+//	public ProdottoDTO modificaPrezzo(@RequestBody ProdottoDTO prodottoDTO, @PathVariable Long id)
+//	{
+//		return prodottoService.modificaPrezzo(prodottoDTO.id(), id);
+//	}
 	@PostMapping("/{id}/prezzo")
-	public ProdottoDTO modificaPrezzo(@RequestBody ProdottoDTO prodottoDTO, @PathVariable Long id)
+	public ProdottoDTO modificaPrezzo(@PathVariable Long id, @RequestBody Map<String, Double> prezzo)
 	{
-		return prodottoService.modificaPrezzo(prodottoDTO.id(), id);
+		double prezzoProdotto = prezzo.get("prezzo");
+		return prodottoService.modificaPrezzo(id, prezzoProdotto);
 	}
+
 
 	@GetMapping("/categoria")
 	public List<String> getCategoria() {

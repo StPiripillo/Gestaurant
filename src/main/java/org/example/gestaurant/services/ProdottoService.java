@@ -6,6 +6,7 @@ import org.example.gestaurant.dao.TavoloDao;
 import org.example.gestaurant.dto.ProdottoDTO;
 import org.example.gestaurant.dto.mappers.ProdottoMapper;
 import org.example.gestaurant.models.Prodotto;
+import org.example.gestaurant.models.Tavolo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +42,12 @@ public class ProdottoService
 		prodotto.setPrezzo(nuovoPrezzo);
 		prodottiDao.save(prodotto);
 		return ProdottoMapper.toDto(prodotto);
+	}
+	public Prodotto delete(Long id)
+	{
+		Prodotto prodotto = prodottiDao.findById(id).orElseThrow(() -> new RuntimeException("Elemento non trovato"));
+		prodottiDao.delete(prodotto);
+		return prodotto;
 	}
 
 }
