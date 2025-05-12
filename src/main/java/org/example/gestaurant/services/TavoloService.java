@@ -27,10 +27,10 @@ public class TavoloService {
         this.tavoloDao = tavoloDao;
     }
 
-    public void aggiungiTavolo(TavoloCreateDTO tavoloCreateDTO) {
+    public void aggiungiTavolo(TavoloDTO tavoloDTO) {
         Tavolo t = new Tavolo();
-        t.setPosti(tavoloCreateDTO.posti());
-        t.setNumeroTavolo(tavoloCreateDTO.numeroTavolo());
+        t.setPosti(tavoloDTO.posti());
+        t.setNumeroTavolo(tavoloDTO.numeroTavolo());
 
         tavoloDao.save(t);
     }

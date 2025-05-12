@@ -32,8 +32,8 @@ public class TavoloController {
 	}
 
 	@PostMapping()
-	public void aggiungiTavolo(@RequestBody TavoloCreateDTO tavoloCreateDTO) {
-		tavoloService.aggiungiTavolo(tavoloCreateDTO);
+	public void aggiungiTavolo(@RequestBody TavoloDTO tavoloDTO) {
+		tavoloService.aggiungiTavolo(tavoloDTO);
 	}
 
 	@PutMapping("/{id}")
