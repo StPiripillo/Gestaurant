@@ -1,7 +1,6 @@
 package org.example.gestaurant.controllers;
 
 import org.example.gestaurant.dao.TavoloDao;
-import org.example.gestaurant.dto.TavoloCreateDTO;
 import org.example.gestaurant.dto.TavoloDTO;
 import org.example.gestaurant.models.Tavolo;
 import org.springframework.beans.factory.annotation.Autowired;
