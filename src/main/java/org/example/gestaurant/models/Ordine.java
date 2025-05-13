@@ -17,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Ordine extends BaseEntity {
     private String nomeOrdine;
+    private String noteOrdine;
     @ManyToOne
     @JoinColumn(name = "id_tavolo")
     private Tavolo tavolo;

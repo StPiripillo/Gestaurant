@@ -29,6 +29,7 @@ public class OrdineService
 		Ordine or = new Ordine();
 		or.setId(odto.id());
 		or.setNomeOrdine(odto.nomeOrdine());
+		or.setNoteOrdine(odto.nomeOrdine());
 		ordineDao.save(or);
 		return OrdineMapper.toDto(or);
 

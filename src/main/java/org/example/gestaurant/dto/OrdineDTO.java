@@ -9,7 +9,8 @@ public record OrdineDTO(
 		Long id,
 		List<Prodotto> prodotti,
 		double totale,
-		String nomeOrdine
+		String nomeOrdine,
+		String noteOrdine
 
 
 

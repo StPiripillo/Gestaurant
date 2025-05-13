@@ -45,7 +45,8 @@ public class OrdineController {
 						ordine.getId(),
 						ordine.getProdotti(),
 						ordine.getTotale(),
-						ordine.getNomeOrdine()
+						ordine.getNomeOrdine(),
+						ordine.getNoteOrdine()
 				))
 				.collect(Collectors.toList());
 
