@@ -53,7 +53,7 @@ public class OrdineController {
 	}
 
 	//da controllare
-	@PostMapping
+	@PostMapping("/newordine")
 	public OrdineDTO aggiungi(@RequestBody OrdineDTO ordineDTO)
 	{
 		 return ordineService.aggiungiOrdine(ordineDTO);
@@ -152,6 +152,8 @@ public class OrdineController {
 				.map(Tipologia::name)
 				.collect(Collectors.toList());
 	}
+
+
 
 
 
