@@ -19,10 +19,10 @@ import java.util.List;
 @AllArgsConstructor
 public class Tavolo extends BaseEntity {
     private int numeroTavolo;
-//    @Enumerated (EnumType.STRING)
-//    private Forma forma;
-//    @Enumerated (EnumType.STRING)
-//    private Dimensione dimensione;
+    @Enumerated (EnumType.STRING)
+    private Forma forma;
+    @Enumerated (EnumType.STRING)
+    private Dimensione dimensione;
     private int posti;
     private int occupato;
     private int x;
