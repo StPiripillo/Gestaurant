@@ -20,20 +20,18 @@ public class ProdottoService
 	@Autowired
 	private TavoloDao tavoloDao;
 
-	public ProdottoDTO aggiungiProdotto(Long idProdotto)
+	public ProdottoDTO aggiungiProdotto(ProdottoDTO prodottoDTO)
 	{
-		Prodotto p = prodottiDao.findById(idProdotto).orElse(null);
-		Prodotto pr = new Prodotto();
-		pr.setId(idProdotto);
-		pr.setNome(p.getNome());
-		pr.setDescrizione(p.getDescrizione());
-		pr.setTip(p.getTip());
-		pr.setIntolleranze(p.getIntolleranze());
-		pr.getPrezzo();
-		pr.getQtn();
+		Prodotto p = new Prodotto();
+		p.setNome(prodottoDTO.nome());
+		p.setDescrizione(prodottoDTO.descrizione());
+		p.setTip(prodottoDTO.tipologia());
+		p.setIntolleranze(prodottoDTO.intolleranze());
+		p.setPrezzo(prodottoDTO.prezzo());
+		p.setQtn(prodottoDTO.Qtn());
 
-		prodottiDao.save(pr);
-		return ProdottoMapper.toDto(pr);
+		prodottiDao.save(p);
+		return ProdottoMapper.toDto(p);
 	}
 
 	public ProdottoDTO modificaPrezzo(Long idProdotto, double nuovoPrezzo)

@@ -75,7 +75,7 @@ public class OrdineController {
 
 	@PostMapping ("/newprodotto")
 	public ProdottoDTO aggiungiProdotto(@RequestBody ProdottoDTO prodottoDTO){
-		return prodottoService.aggiungiProdotto(prodottoDTO.id());
+		return prodottoService.aggiungiProdotto(prodottoDTO);
 	}
 
 	//c
