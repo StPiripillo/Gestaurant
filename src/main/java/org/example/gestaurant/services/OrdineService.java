@@ -33,8 +33,8 @@ public class OrdineService
 		Ordine or = new Ordine();
 		or.setId(idOrdine);
 		or.setProdotti((List<Prodotto>) p);
-		or.setOra(LocalTime.now());
 		or.setTavolo(t);
+		or.setNomeOrdine(p.getNome());
 
 		ordineDao.save(or);
 		return OrdineMapper.toDto(or);

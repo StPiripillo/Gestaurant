@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Ordine extends BaseEntity {
-    private LocalTime ora;
+    private String nomeOrdine;
     @ManyToOne
     @JoinColumn(name = "id_tavolo")
     private Tavolo tavolo;
