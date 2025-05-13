@@ -4,5 +4,6 @@ public enum Intolleranze {
     GLUTINE,
     LATTOSIO,
     SOLFITI,
-    CONSERVANTI
+    CONSERVANTI,
+    NESSUNA
 }
