@@ -7,8 +7,8 @@ import java.util.List;
 
 public record OrdineDTO(
 		Long id,
-		List<Prodotto> prodotti,
-		double totale,
+		//List<Prodotto> prodotti,
+		//double totale,
 		String nomeOrdine,
 		String noteOrdine
 

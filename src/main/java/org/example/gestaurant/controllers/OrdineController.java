@@ -43,8 +43,6 @@ public class OrdineController {
 
 		return oDao.findAll().stream().map(ordine -> new OrdineDTO(
 						ordine.getId(),
-						ordine.getProdotti(),
-						ordine.getTotale(),
 						ordine.getNomeOrdine(),
 						ordine.getNoteOrdine()
 				))
