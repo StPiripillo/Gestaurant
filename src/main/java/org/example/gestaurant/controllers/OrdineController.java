@@ -44,7 +44,9 @@ public class OrdineController {
 		return oDao.findAll().stream().map(ordine -> new OrdineDTO(
 						ordine.getId(),
 						ordine.getProdotti(),
-						ordine.getTotale()
+						ordine.getTotale(),
+						ordine.getNomeOrdine(),
+						ordine.getNoteOrdine()
 				))
 				.collect(Collectors.toList());
 
@@ -54,7 +56,7 @@ public class OrdineController {
 	@PostMapping
 	public OrdineDTO aggiungi(@RequestBody OrdineDTO ordineDTO)
 	{
-		 return ordineService.aggiungiOrdine(ordineDTO.id(), ordineDTO.id());
+		 return ordineService.aggiungiOrdine(ordineDTO);
 	}
 	//fare metodo getAll prodotti
 	@GetMapping("/prodotti")
