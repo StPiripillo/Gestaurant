@@ -17,7 +17,7 @@ public class OrdineMapper
     public static OrdineDTO toDto(Ordine ordine)
     {
         List<ProdottoDTO> prodottoDTOS = prodottoMapper.toDto(ordine.getProdotti());
-        return new OrdineDTO(ordine.getId(), ordine.getProdotti(), ordine.getTotale());
+        return new OrdineDTO(ordine.getId(), ordine.getProdotti(), ordine.getTotale(), ordine.getNomeOrdine());
     }
 
 }

@@ -24,18 +24,11 @@ public class OrdineService
 	@Autowired
 	private TavoloDao tavoloDao;
 
-	public OrdineDTO aggiungiOrdine(Long idOrdine, Long idProdotto)
+	public OrdineDTO aggiungiOrdine(OrdineDTO odto)
 	{
-		Ordine o= ordineDao.findById(idOrdine).orElse(null);
-		Prodotto p = prodottiDao.findById(idProdotto).orElse(null);
-		Tavolo t = tavoloDao.findById(idOrdine).orElse(null);
-
 		Ordine or = new Ordine();
-		or.setId(idOrdine);
-		or.setProdotti((List<Prodotto>) p);
-		or.setTavolo(t);
-		or.setNomeOrdine(p.getNome());
-
+		or.setId(odto.id());
+		or.setNomeOrdine(odto.nomeOrdine());
 		ordineDao.save(or);
 		return OrdineMapper.toDto(or);
 
