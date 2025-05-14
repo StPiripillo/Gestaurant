@@ -1,12 +1,8 @@
 package org.example.gestaurant.dto;
 
 
-import org.example.gestaurant.models.Prodotto;
-
-import java.util.List;
-
 public record OrdineDTO(
-		Long id,
+		Long tavoloId,
 		//List<Prodotto> prodotti,
 		//double totale,
 		String nomeOrdine,
