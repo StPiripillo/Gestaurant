@@ -37,7 +37,7 @@ public class OrdineController {
 	private IngredientiDao ingredientiDAO;
 
 
-	@GetMapping("/listaordini")
+	@GetMapping()
 	public List<OrdineDTO> getAll()
 	{
 		return oDao.findAll().stream().map(ordine -> new OrdineDTO(
