@@ -1,8 +1,6 @@
 package org.example.gestaurant.controllers;
 
 import org.example.gestaurant.dao.IngredientiDao;
-import org.example.gestaurant.dao.OrdineDao;
-import org.example.gestaurant.dao.ProdottoDao;
 import org.example.gestaurant.dto.OrdineDTO;
 import org.example.gestaurant.dto.ProdottoDTO;
 import org.example.gestaurant.enums.Tipologia;
@@ -11,6 +9,7 @@ import org.example.gestaurant.models.Prodotto;
 import org.example.gestaurant.services.OrdineService;
 import org.example.gestaurant.services.ProdottoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,14 +22,9 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/ordine")
 public class OrdineController {
+
 	@Autowired
 	private OrdineService ordineService;
-
-
-	@Autowired
-	private OrdineDao oDao;
-	@Autowired
-	private ProdottoDao pDao;
 	@Autowired
 	private ProdottoService prodottoService;
 	@Autowired
@@ -40,12 +34,7 @@ public class OrdineController {
 	@GetMapping()
 	public List<OrdineDTO> getAll()
 	{
-		return oDao.findAll().stream().map(ordine -> new OrdineDTO(
-						ordine.getId(),
-						ordine.getNomeOrdine(),
-						ordine.getNoteOrdine()
-				))
-				.collect(Collectors.toList());
+		return ordineService.getAll();
 
 	}
 
@@ -58,17 +47,7 @@ public class OrdineController {
 	//fare metodo getAll prodotti
 	@GetMapping("/prodotti")
 	public List<ProdottoDTO> getAllProdotti() {
-		return pDao.findAll().stream()
-				.map(prodotto -> new ProdottoDTO(
-						prodotto.getId(),
-						prodotto.getNome(),
-						prodotto.getDescrizione(),
-						prodotto.getTip(),
-						prodotto.getIntolleranze(),
-						prodotto.getPrezzo(),
-						prodotto.getQtn()
-				))
-				.collect(Collectors.toList());
+		return prodottoService.getAllProdotti();
 	}
 	//metodo per creare i prodotti
 
@@ -80,10 +59,9 @@ public class OrdineController {
 	//c
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> eliminaProdotto(@PathVariable Long id) {
-		Prodotto prodotto = pDao.findById(id).orElse(null);
+		Prodotto prodotto = prodottoService.delete(id);
 		if (prodotto != null) {
-			pDao.delete(prodotto);
-			return ResponseEntity.noContent().build();
+			return ResponseEntity.ok(prodotto);
 		} else {
 			return ResponseEntity.notFound().build();
 		}
@@ -148,6 +126,10 @@ public class OrdineController {
 		return Arrays.stream(Tipologia.values())
 				.map(Tipologia::name)
 				.collect(Collectors.toList());
+	}
+	@GetMapping("/bytavolo")
+	public List<OrdineDTO> getOrdiniByTavolo(@PathVariable Long tavoloId) {
+		return ordineService.getAllByTavoloId(tavoloId);
 	}
 
 

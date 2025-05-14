@@ -10,6 +10,9 @@ import org.example.gestaurant.models.Tavolo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class OrdineService
 {
@@ -30,5 +33,26 @@ public class OrdineService
 		ordineDao.save(or);
 		return OrdineMapper.toDto(or);
 
+	}
+	public OrdineDTO getOrdineById(Long id)
+	{
+		Ordine ordine = ordineDao.findById(id).orElseThrow(() -> new RuntimeException("Elemento non trovato"));
+		return OrdineMapper.toDto(ordine);
+	}
+	public List<OrdineDTO> getAll()
+	{
+		return ordineDao.findAll()
+				.stream()
+				.map(OrdineMapper::toDto)
+				.collect(Collectors.toList());
+	}
+	//metodo per filtrare per id del Tavolo
+	// da controllare
+	public List<OrdineDTO> getAllByTavoloId(Long id)
+	{
+		return ordineDao.findAllByTavoloId(id)
+				.stream()
+				.map(OrdineMapper::toDto)
+				.collect(Collectors.toList());
 	}
 }
