@@ -66,4 +66,13 @@ public class TavoloController {
 		return tavoloService.updateOccupato(id, occupato);
 	}
 
+	@PostMapping("/backup-posizioni")
+	public void salvaBackupPosizioni(@RequestBody List<Map<String, Integer>> posizioni) {
+		tavoloService.salvaBackupPosizioni(posizioni);
+	}
+
+	@GetMapping("/backup-posizioni")
+	public List<Map<String, Integer>> caricaBackupPosizioni() {
+		return tavoloService.caricaBackupPosizioni();
+	}
 }

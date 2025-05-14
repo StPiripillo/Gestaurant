@@ -11,7 +11,9 @@ public record TavoloDTO(
 		int posti,
 		int occupato,
 		int x,
-		int y
+		int y,
+		int xBackup,
+		int yBackup
 )
 {
 }

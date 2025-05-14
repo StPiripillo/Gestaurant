@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,7 +47,9 @@ public class TavoloService {
                         t.getPosti(),
                         t.getOccupato(),
                         t.getX(),
-                        t.getY()
+                        t.getY(),
+                        t.getXBackup(),
+                        t.getYBackup()
                 ))
                 .collect(Collectors.toList());
     }
@@ -77,6 +80,30 @@ public class TavoloService {
         Tavolo tavolo = tavoloDao.findById(id).orElseThrow(() -> new RuntimeException("Tavolo non trovato"));
         tavolo.setOccupato(occupato);
         return tavoloDao.save(tavolo);
+    }
+
+    public void salvaBackupPosizioni(List<Map<String, Integer>> posizioni) {
+        for (Map<String, Integer> pos : posizioni) {
+            Long id = Long.valueOf(pos.get("id"));
+            int x = pos.get("x");
+            int y = pos.get("y");
+            Tavolo tavolo = tavoloDao.findById(id).orElse(null);
+            if (tavolo != null) {
+                tavolo.setXBackup(x);
+                tavolo.setYBackup(y);
+                tavoloDao.save(tavolo);
+            }
+        }
+    }
+
+    public List<Map<String, Integer>> caricaBackupPosizioni() {
+        return tavoloDao.findAll().stream()
+                .map(t -> Map.of(
+                        "id", t.getId().intValue(),
+                        "x", t.getXBackup(),
+                        "y", t.getYBackup()
+                ))
+                .collect(Collectors.toList());
     }
 }
 
