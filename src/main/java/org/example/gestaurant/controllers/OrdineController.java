@@ -5,6 +5,7 @@ import org.example.gestaurant.dto.OrdineDTO;
 import org.example.gestaurant.dto.ProdottoDTO;
 import org.example.gestaurant.enums.Tipologia;
 import org.example.gestaurant.models.Ingredienti;
+import org.example.gestaurant.models.Ordine;
 import org.example.gestaurant.models.Prodotto;
 import org.example.gestaurant.services.OrdineService;
 import org.example.gestaurant.services.ProdottoService;
@@ -136,6 +137,13 @@ public class OrdineController {
 	public List<OrdineDTO> getOrdiniByTavolo(@PathVariable Long tavoloId) {
 		return ordineService.getAllByTavoloId(tavoloId);
 	}
+	@DeleteMapping("/{id}/cancella")
+	public ResponseEntity<Void> cancellaOrdine(@PathVariable Long id) {
+		Ordine ordine = ordineService.deleteordine(id);
+		return ResponseEntity.ok().build();
+	}
+
+
 
 
 

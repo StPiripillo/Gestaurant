@@ -56,4 +56,10 @@ public class OrdineService
 				.map(OrdineMapper::toDto)
 				.collect(Collectors.toList());
 	}
+	public Ordine deleteordine(Long id)
+	{
+		Ordine ordine = ordineDao.findById(id).orElseThrow(() -> new RuntimeException("Elemento non trovato"));
+		ordineDao.delete(ordine);
+		return ordine;
+	}
 }
