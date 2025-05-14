@@ -1,6 +1,8 @@
 package org.example.gestaurant.controllers;
 
 import org.example.gestaurant.dao.IngredientiDao;
+import org.example.gestaurant.dao.OrdineDao;
+import org.example.gestaurant.dao.TavoloDao;
 import org.example.gestaurant.dto.OrdineDTO;
 import org.example.gestaurant.dto.ProdottoDTO;
 import org.example.gestaurant.enums.Tipologia;
@@ -30,6 +32,10 @@ public class OrdineController {
 	private ProdottoService prodottoService;
 	@Autowired
 	private IngredientiDao ingredientiDAO;
+	@Autowired
+	private TavoloDao tavoloDao;
+//	@Autowired
+//	private OrdineDao ordineDao;
 
 
 	@GetMapping()
@@ -137,10 +143,14 @@ public class OrdineController {
 	public List<OrdineDTO> getOrdiniByTavolo(@PathVariable Long tavoloId) {
 		return ordineService.getAllByTavoloId(tavoloId);
 	}
-	@DeleteMapping("/{id}/cancella")
+	@DeleteMapping("/{id}/delete")
 	public ResponseEntity<Void> cancellaOrdine(@PathVariable Long id) {
 		Ordine ordine = ordineService.deleteordine(id);
-		return ResponseEntity.ok().build();
+		if (ordine != null) {
+			return ResponseEntity.noContent().build();
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 
 
