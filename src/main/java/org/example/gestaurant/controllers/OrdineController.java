@@ -37,14 +37,11 @@ public class OrdineController {
 	private IngredientiDao ingredientiDAO;
 
 
-	@GetMapping
+	@GetMapping("/listaordini")
 	public List<OrdineDTO> getAll()
 	{
-
 		return oDao.findAll().stream().map(ordine -> new OrdineDTO(
 						ordine.getId(),
-						ordine.getProdotti(),
-						ordine.getTotale(),
 						ordine.getNomeOrdine(),
 						ordine.getNoteOrdine()
 				))
@@ -133,10 +130,10 @@ public class OrdineController {
 		ingredientiDAO.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
-//	@PostMapping("/{id}/prezzo")
-//	public ProdottoDTO modificaPrezzo(@RequestBody ProdottoDTO prodottoDTO, @PathVariable Long id)
+//	@PostMapping("/{tavoloId}/prezzo")
+//	public ProdottoDTO modificaPrezzo(@RequestBody ProdottoDTO prodottoDTO, @PathVariable Long tavoloId)
 //	{
-//		return prodottoService.modificaPrezzo(prodottoDTO.id(), id);
+//		return prodottoService.modificaPrezzo(prodottoDTO.tavoloId(), tavoloId);
 //	}
 	@PostMapping("/{id}/prezzo")
 	public ProdottoDTO modificaPrezzo(@PathVariable Long id, @RequestBody Map<String, Double> prezzo)
