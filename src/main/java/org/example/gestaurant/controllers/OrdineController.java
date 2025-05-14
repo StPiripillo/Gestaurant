@@ -37,7 +37,7 @@ public class OrdineController {
 	private IngredientiDao ingredientiDAO;
 
 
-	@GetMapping
+	@GetMapping("/listaordini")
 	public List<OrdineDTO> getAll()
 	{
 
