@@ -38,6 +38,11 @@ public class OrdineController {
 
 	}
 
+	@GetMapping("/{ordineId}")
+	public OrdineDTO getOrdineById(@PathVariable Long ordineId) {
+		return ordineService.getOrdineById(ordineId);
+	}
+
 	//da controllare
 	@PostMapping("/newordine")
 	public OrdineDTO aggiungi(@RequestBody OrdineDTO ordineDTO)

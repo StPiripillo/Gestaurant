@@ -21,11 +21,6 @@ public class Ordine extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "id_tavolo")
     private Tavolo tavolo;
-    @OneToMany(mappedBy = "ordine", fetch = FetchType.EAGER)
-    private List<Prodotto> prodotti = new ArrayList<>();
+    private double totale;
 
-    public double getTotale() {
-        return prodotti.stream().mapToDouble(i -> i.getQtn() * i.getPrezzo()).sum();
-
-    }
 }

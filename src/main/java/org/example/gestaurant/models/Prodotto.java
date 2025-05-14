@@ -1,5 +1,4 @@
 package org.example.gestaurant.models;
-
 import org.example.gestaurant.enums.Intolleranze;
 import org.example.gestaurant.enums.Tipologia;
 import jakarta.persistence.*;
@@ -28,7 +27,5 @@ public class Prodotto extends BaseEntity {
 	private Intolleranze intolleranze;
 	@OneToMany(mappedBy = "prodotto", fetch = FetchType.EAGER)
 	private List<Ingredienti> ingredienti = new ArrayList<>();
-	@ManyToOne
-	@JoinColumn(name = "id_ordine")
-	private Ordine ordine;
+
 }

@@ -5,6 +5,7 @@ import org.example.gestaurant.dao.ProdottoDao;
 import org.example.gestaurant.dao.TavoloDao;
 import org.example.gestaurant.dto.ProdottoDTO;
 import org.example.gestaurant.dto.mappers.ProdottoMapper;
+import org.example.gestaurant.models.Ordine;
 import org.example.gestaurant.models.Prodotto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,5 +56,6 @@ public class ProdottoService
 				.map(ProdottoMapper::toDto)
 				.collect(Collectors.toList());
 	}
+
 
 }
