@@ -9,6 +9,4 @@ import java.util.Optional;
 
 public interface TavoloDao extends JpaRepository<Tavolo, Long>
 {
-
-	Tavolo findAllByNumeroTavolo(int numeroTavolo);
 }
