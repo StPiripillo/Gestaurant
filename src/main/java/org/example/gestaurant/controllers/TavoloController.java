@@ -54,16 +54,16 @@ public class TavoloController {
 		}
 	}
 	@PutMapping ("/{id}/numero")
-	public Tavolo updateNumeroTavolo( @PathVariable Long id,@RequestBody Map<String, Integer> body)
+	public void updateNumeroTavolo( @PathVariable Long id,@RequestBody Map<String, Integer> body)
 	{
 		int numeroTavolo = body.get("numeroTavolo");
-		return tavoloService.updateNumeroTavolo(id, numeroTavolo);
+		tavoloService.updateNumeroTavolo(id, numeroTavolo);
 	}
 
 	@PutMapping("/{id}/occupato")
-	private Tavolo updateOccupato(@PathVariable Long id, @RequestBody Map<String, Integer> body) {
+	private void updateOccupato(@PathVariable Long id, @RequestBody Map<String, Integer> body) {
 		int occupato = body.get("occupato");
-		return tavoloService.updateOccupato(id, occupato);
+		tavoloService.updateOccupato(id, occupato);
 	}
 
 	@PostMapping("/backup-posizioni")
