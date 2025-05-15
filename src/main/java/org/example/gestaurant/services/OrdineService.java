@@ -62,4 +62,11 @@ public class OrdineService
 		ordineDao.delete(ordine);
 		return ordine;
 	}
+
+	public void eliminaOrdiniByTavoloId(Long tavoloId) {
+		if (!tavoloDao.existsById(tavoloId)) {
+			throw new RuntimeException("Tavolo con ID " + tavoloId + " non trovato");
+		}
+		ordineDao.deleteByTavolo_Id(tavoloId);
+	}
 }

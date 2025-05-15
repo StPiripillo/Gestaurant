@@ -153,10 +153,18 @@ public class OrdineController {
 		}
 	}
 
-
-
-
-
-
+	@DeleteMapping("/tavolo/{tavoloId}")
+	public ResponseEntity<Void> eliminaOrdiniTavolo(@PathVariable Long tavoloId) {
+		try {
+			ordineService.eliminaOrdiniByTavoloId(tavoloId);
+			return ResponseEntity.noContent().build();
+		} catch (RuntimeException e) {
+			e.printStackTrace(); // Stampa la traccia dell'errore per maggiori dettagli
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // Cambia lo status a 404 se l'elemento non trovato è previsto
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
 
 }
