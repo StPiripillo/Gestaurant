@@ -97,7 +97,13 @@ public class TavoloService {
     }
 
     public List<Map<String, Integer>> caricaBackupPosizioni() {
-        return tavoloDao.findAll().stream()
+        List<Tavolo> tavoli = tavoloDao.findAll();
+        for (Tavolo t : tavoli) {
+            t.setX(t.getXBackup());
+            t.setY(t.getYBackup());
+            tavoloDao.save(t);
+        }
+        return tavoli.stream()
                 .map(t -> Map.of(
                         "id", t.getId().intValue(),
                         "x", t.getXBackup(),
